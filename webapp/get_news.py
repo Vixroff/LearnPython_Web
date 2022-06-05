@@ -22,9 +22,9 @@ def get_news_python():
             url = news.find('a')['href']
             published = news.find('time').text
             try:
-                published = datetime.strptime(published, '%Y-%m-%d')
+                published =datetime.strptime(published, '%b %d, %Y')
             except (ValueError):
-                published = datetime.now()           
+                published = datetime.now()          
             save_news(title, url, published)
 
 def save_news(title, url, published):
