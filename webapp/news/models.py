@@ -1,7 +1,8 @@
-from sqlite3 import IntegrityError
-from flask_sqlalchemy import SQLAlchemy
+from flask import Blueprint
+from webapp.db import db
 
-db = SQLAlchemy()
+blueprint = Blueprint('news', __name__, )
+
 
 class News(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -11,6 +12,4 @@ class News(db.Model):
     text = db.Column(db.Text, nullable = True)
 
     def __repl__(self):
-        return '<News {} {}'.format(self.title, self.url)
-
-        
+        return '<News {} {}>'.format(self.title, self.url)
